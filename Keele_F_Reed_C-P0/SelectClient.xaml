@@ -161,7 +161,7 @@
                               </ui:InputDialog.Result>
                             </ui:InputDialog>
                             <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[addRemove]" sap:VirtualizedContainerService.HintSize="603,867" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-                              <Sequence x:Key="Exit" sap:VirtualizedContainerService.HintSize="376,251" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                              <Sequence x:Key="Exit" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_11">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -177,7 +177,7 @@
                                 </Assign>
                                 <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;See ya!&quot;]" />
                               </Sequence>
-                              <Sequence x:Key="Add" DisplayName="AddOrder" sap:VirtualizedContainerService.HintSize="476,819" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <Sequence x:Key="Add" DisplayName="AddOrder" sap:VirtualizedContainerService.HintSize="476,779" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -245,7 +245,7 @@
                                             <OutArgument x:TypeArguments="x:String">[removedItem]</OutArgument>
                                           </ui:InputDialog.Result>
                                         </ui:InputDialog>
-                                        <bes:FindReplace ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Find Replace" FilePath="C:\Revature\Keele_F_Reed_C-P0\ClientList.xlsx" Find="[removedItem]" FindOption="Part" sap:VirtualizedContainerService.HintSize="445,69" sap2010:WorkflowViewState.IdRef="FindReplace_1" SheetName="[findClient]">
+                                        <bes:FindReplace ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Find Replace" FilePath="C:\Revature\P0-Project\Keele_F_Reed_C-P0\Keele_F_Reed_C-P0\ExcelSheets\ClientList.xlsx" Find="[removedItem]" FindOption="Part" sap:VirtualizedContainerService.HintSize="445,69" sap2010:WorkflowViewState.IdRef="FindReplace_1" SheetName="[findClient]">
                                           <bes:FindReplace.CellRange>
                                             <InArgument x:TypeArguments="x:String">
                                               <Literal x:TypeArguments="x:String" Value="" />
