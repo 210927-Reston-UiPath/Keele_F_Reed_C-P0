@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SelectClient" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1311,3388" sap2010:WorkflowViewState.IdRef="SelectClient_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bes="clr-namespace:BalaReva.Excel.Sheets;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SelectClient" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1311,1485" sap2010:WorkflowViewState.IdRef="SelectClient_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bes="clr-namespace:BalaReva.Excel.Sheets;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="62">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -38,7 +38,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -71,7 +71,7 @@
       <AssemblyReference>BalaReva.Excel.Base</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="1302,3283" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap:VirtualizedContainerService.HintSize="797,1380" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="findClient" />
       <Variable x:TypeArguments="sd:DataTable" Name="clientList" />
@@ -83,23 +83,31 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="1260,238" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter the name of the client you want to find" Title="Select Client">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="755,238" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter the name of the client you want to find" Title="Select Client">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[findClient]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:ReadRange AddHeaders="True" DataTable="[clientList]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="1260,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" Range="A:B" SheetName="Client info" WorkbookPath="ExcelSheets\ClientList.xlsx" />
-    <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[clientList]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="1260,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="Client" LookupValue="[findClient]" RowIndex="[found]">
+    <Assign sap:VirtualizedContainerService.HintSize="755,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[findClient]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[findClient.ToLower]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ReadRange AddHeaders="True" DataTable="[clientList]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="755,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" Range="A:B" SheetName="Client info" WorkbookPath="C:\Revature\Keele_F_Reed_C-P0\ExcelSheets\ClientList.xlsx" />
+    <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[clientList]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="755,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="Client" LookupValue="[findClient]" RowIndex="[found]">
       <ui:LookupDataTable.CellValue>
         <OutArgument x:TypeArguments="x:String">[foundclient]</OutArgument>
       </ui:LookupDataTable.CellValue>
     </ui:LookupDataTable>
-    <If Condition="[found &lt; 0]" sap:VirtualizedContainerService.HintSize="1260,2724" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[found &lt; 0]" sap:VirtualizedContainerService.HintSize="755,721" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;The client &quot; + findClient + &quot; cannot be found&quot;]" />
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="881,2576" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,573" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="editOrder" />
           </Sequence.Variables>
@@ -108,14 +116,20 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="839,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Client &quot; + findClient + &quot; found!&quot;]" />
-          <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="839,291" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Would you like to edit your order?" OptionsString="Yes;No" Title="Edit an order">
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Client &quot; + findClient + &quot; found!&quot;]" />
+          <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="334,291" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Would you like to edit your order?" OptionsString="Yes;No" Title="Edit an order">
             <ui:InputDialog.Result>
               <OutArgument x:TypeArguments="x:String">[editOrder]</OutArgument>
             </ui:InputDialog.Result>
           </ui:InputDialog>
-          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[editOrder]" sap:VirtualizedContainerService.HintSize="839,2054" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-            <Sequence x:Key="Yes" sap:VirtualizedContainerService.HintSize="799,1848" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[editOrder]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence x:Key="Yes" sap:VirtualizedContainerService.HintSize="304,243" sap2010:WorkflowViewState.IdRef="Sequence_8">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="Yis" />
               </Sequence.Variables>
@@ -124,7 +138,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="757,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Boolean">[Yis]</OutArgument>
                 </Assign.To>
@@ -132,21 +146,21 @@
                   <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="757,1656" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+              <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
                 <ui:InterruptibleDoWhile.Body>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="721,1491" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="634,1770" sap2010:WorkflowViewState.IdRef="Sequence_10">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="679,1399" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="ExcelSheets\ClientList.xlsx">
+                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="592,1678" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Revature\Keele_F_Reed_C-P0\ExcelSheets\ClientList.xlsx">
                       <ui:ExcelApplicationScope.Body>
                         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="645,1290" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="558,1569" sap2010:WorkflowViewState.IdRef="Sequence_9">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:String" Name="addRemove" />
                             </Sequence.Variables>
@@ -155,13 +169,13 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="603,291" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="Would you like to add or remove items" OptionsString="Add;Remove;Exit" Title="Add or Remove">
+                            <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="516,291" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="Would you like to add or remove items" OptionsString="Add;Remove;Exit" Title="Add or Remove">
                               <ui:InputDialog.Result>
                                 <OutArgument x:TypeArguments="x:String">[addRemove]</OutArgument>
                               </ui:InputDialog.Result>
                             </ui:InputDialog>
-                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[addRemove]" sap:VirtualizedContainerService.HintSize="603,867" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-                              <Sequence x:Key="Exit" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[addRemove]" sap:VirtualizedContainerService.HintSize="516,1146" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                              <Sequence x:Key="Exit" sap:VirtualizedContainerService.HintSize="376,251" sap2010:WorkflowViewState.IdRef="Sequence_11">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -177,20 +191,20 @@
                                 </Assign>
                                 <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;See ya!&quot;]" />
                               </Sequence>
-                              <Sequence x:Key="Add" DisplayName="AddOrder" sap:VirtualizedContainerService.HintSize="476,819" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <Sequence x:Key="Add" DisplayName="AddOrder" sap:VirtualizedContainerService.HintSize="476,919" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,727" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="ExcelSheets\ClientList.xlsx">
+                                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,827" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="C:\Revature\Keele_F_Reed_C-P0\ExcelSheets\ClientList.xlsx">
                                   <ui:ExcelApplicationScope.Body>
                                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                       </ActivityAction.Argument>
-                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,618" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,718" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                         <Sequence.Variables>
                                           <Variable x:TypeArguments="sd:DataTable" Name="addedItem" />
                                           <Variable x:TypeArguments="x:String" Name="addItem" />
@@ -205,6 +219,14 @@
                                             <OutArgument x:TypeArguments="x:String">[addItem]</OutArgument>
                                           </ui:InputDialog.Result>
                                         </ui:InputDialog>
+                                        <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[addItem]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">[addItem.ToLower]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
                                         <ui:BuildDataTable DataTable="[addedItem]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Added_x0020_Item&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
                                         <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{addItem}]" DataTable="[addedItem]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
                                         <ui:ExcelAppendRange DataTable="[addedItem]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelAppendRange_1" SheetName="[findClient]" />
@@ -219,21 +241,22 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:ExcelApplicationScope>
                               </Sequence>
-                              <Sequence x:Key="Remove" sap:VirtualizedContainerService.HintSize="563,640" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <Sequence x:Key="Remove" sap:VirtualizedContainerService.HintSize="563,740" sap2010:WorkflowViewState.IdRef="Sequence_15">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="521,548" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="ExcelSheets\ClientList.xlsx">
+                                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="521,648" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="C:\Revature\Keele_F_Reed_C-P0\ExcelSheets\ClientList.xlsx">
                                   <ui:ExcelApplicationScope.Body>
                                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                       </ActivityAction.Argument>
-                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="487,439" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="487,539" sap2010:WorkflowViewState.IdRef="Sequence_14">
                                         <Sequence.Variables>
                                           <Variable x:TypeArguments="x:String" Name="removedItem" />
+                                          <Variable x:TypeArguments="sd:DataTable" Name="deleteColumn" />
                                         </Sequence.Variables>
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -245,7 +268,15 @@
                                             <OutArgument x:TypeArguments="x:String">[removedItem]</OutArgument>
                                           </ui:InputDialog.Result>
                                         </ui:InputDialog>
-                                        <bes:FindReplace ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Find Replace" FilePath="C:\Revature\P0-Project\Keele_F_Reed_C-P0\Keele_F_Reed_C-P0\ExcelSheets\ClientList.xlsx" Find="[removedItem]" FindOption="Part" sap:VirtualizedContainerService.HintSize="445,69" sap2010:WorkflowViewState.IdRef="FindReplace_1" SheetName="[findClient]">
+                                        <Assign sap:VirtualizedContainerService.HintSize="445,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[removedItem]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">[removedItem.ToLower]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <bes:FindReplace ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Find Replace" FilePath="C:\Revature\Keele_F_Reed_C-P0\ExcelSheets\ClientList.xlsx" Find="[removedItem]" FindOption="Part" sap:VirtualizedContainerService.HintSize="445,69" sap2010:WorkflowViewState.IdRef="FindReplace_1" SheetName="[findClient]">
                                           <bes:FindReplace.CellRange>
                                             <InArgument x:TypeArguments="x:String">
                                               <Literal x:TypeArguments="x:String" Value="" />
@@ -272,6 +303,12 @@
                 <ui:InterruptibleDoWhile.Condition>
                   <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Yis" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
                 </ui:InterruptibleDoWhile.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </ui:InterruptibleDoWhile>
             </Sequence>
             <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="No" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Ok&quot;]" />
